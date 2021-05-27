@@ -15,9 +15,9 @@ movies_serialized = URI.open(url).read
 movies = JSON.parse(movies_serialized)
 
 movies["results"].each do |movie_hash|
-    Movie.create!(
+    movie = Movie.create!(
         overview: movie_hash["overview"],
-        poster_url: movie_hash["poster_path"],
+        poster_url: "https://image.tmdb.org/t/p/w300#{movie_hash['poster_path']}",
         rating: movie_hash["vote_average"],
         title: movie_hash["title"]
     )

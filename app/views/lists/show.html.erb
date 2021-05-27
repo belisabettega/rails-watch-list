@@ -1,0 +1,24 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+    <a class="btn btn-flat" href="#"><%= @list.bookmarks.count %> movies</a>
+  </div>
+</div>
+<div class="container">
+    <%= link_to "Add a movie", new_list_path, class: "btn btn-ghost" %>
+    <div class="cards">
+    <% @list.bookmarks.each do |bookmark| %>
+        <div class="card-trip">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-trip-infos">
+            <div>
+            <h2><%= bookmark.movie.title %></h2>
+            <p>Short description here!</p>
+            </div>
+            <h2 class="card-trip-pricing">£99.99</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        </div>
+        </div>
+    <% end %>
+    </div>
+</div>
