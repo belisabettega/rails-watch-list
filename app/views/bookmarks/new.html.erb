@@ -1,5 +1,3 @@
-
-
 <%= simple_form_for [@list, Bookmark.new] do |f| %>
   <%= f.input :comment %>
   <%= f.input :movie, as: :select, collection: Movie.all %>

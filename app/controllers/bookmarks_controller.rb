@@ -5,10 +5,12 @@ class BookmarksController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @bookmark = Bookmark.new(secure_params)
+    @bookmark = Bookmark.new
+    @bookmark.comment = secure_params[:comment]
+    @bookmark.movie = Movie.find(secure_params[:movie])
     @bookmark.list = @list
     if @bookmark.save
-      redirect_to lists_path
+      redirect_to list_path(@list)
     else
       render 'new'
     end
