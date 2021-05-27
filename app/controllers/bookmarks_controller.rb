@@ -5,10 +5,9 @@ class BookmarksController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @movie = Movie.find_by(title: params[:bookmark][:movie])
-    @new_bookmark = Bookmark.new(secure_params)
-    @new_bookmark.movie = @movie
-    if @new_bookmark.save
+    @bookmark = Bookmark.new(secure_params)
+    @bookmark.list = @list
+    if @bookmark.save
       redirect_to lists_path
     else
       render 'new'
@@ -18,6 +17,6 @@ class BookmarksController < ApplicationController
   private
 
   def secure_params
-    params.require(:bookmark).permit(:comment)
+    params.require(:bookmark).permit(:comment, :movie)
   end
 end
