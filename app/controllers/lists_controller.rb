@@ -23,7 +23,7 @@ class ListsController < ApplicationController
   private
 
   def secure_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 
   def find_list
