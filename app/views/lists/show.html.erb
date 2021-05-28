@@ -9,14 +9,14 @@
     <div class="cards">
     <% @list.bookmarks.each do |bookmark| %>
         <div class="card-trip">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <img src=<%= bookmark.movie.poster_url %> />
         <div class="card-trip-infos">
             <div>
-            <h2><%= bookmark.movie.title %></h2>
-            <p>Short description here!</p>
+            <h2><strong><%= bookmark.movie.title %></strong><%= bookmark.movie.rating %><i class="fas fa-star"></i></h2></h2>
+            <p><%= bookmark.movie.overview %></p>
+            <h2><i class="fas fa-quote-left"><%= bookmark.comment %></i></h2>
+            <h2><%= link_to "Delete", bookmark_path(bookmark), method: :delete %></h2>
             </div>
-            <h2 class="card-trip-pricing">£99.99</h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
         </div>
         </div>
     <% end %>
