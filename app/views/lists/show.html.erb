@@ -1,19 +1,25 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @list.photo.key, height: 300 %>');">
-  <div class="container">
-    <h1><%= @list.name %></h1>
+  <div class="container d-flex align-items-center flex-column">
+    <h1 class="py-3"><%= @list.name %></h1>
     <a class="btn btn-flat" href="#"><%= @list.bookmarks.count %> movies</a>
   </div>
 </div>
-<div class="container">
-    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-ghost" %>
+<div class="container my-5">
+    <div class="d-flex mb-5 justify-content-between align-items-center">
+      <h1>Movies in this list:</h1>
+      <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-ghost" %>
+    </div>
     <div class="cards">
     <% @list.bookmarks.each do |bookmark| %>
         <div class="card-trip">
         <img src=<%= bookmark.movie.poster_url %> />
         <div class="card-trip-infos">
             <div>
-            <h2><strong><%= bookmark.movie.title %></strong><%= bookmark.movie.rating %><i class="fas fa-star"></i></h2></h2>
-            <p><%= bookmark.movie.overview %></p>
+            <div class="d-flex justify-content-between mb-3">
+              <h2><strong><%= bookmark.movie.title %></strong></h2>
+              <div class="d-flex justify-content-between"><p><%= bookmark.movie.rating %></p><i class="fas fa-star"></i></div>
+            </div>
+            <p class="mb-3"><%= bookmark.movie.overview %></p>
             <h2><i class="fas fa-quote-left"><%= bookmark.comment %></i></h2>
             <h2><%= link_to "Delete", bookmark_path(bookmark), method: :delete %></h2>
             </div>
